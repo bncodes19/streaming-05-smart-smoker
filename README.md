@@ -37,8 +37,8 @@ python3 emitter_of_tasks.py
 These messages are sent to three separate queues:
 > smoker-queue, brisket-queue, ribs-queue
 
-![Stream of messages](stream_of_messages.png)
+![Stream of messages](project_screenshots/stream_of_messages.png)
 
 ## Screenshot of separate queues in RabbitMQ Admin
 After running the emitter_of_tasks.py file the messages are sent to three separate queues as seen on RabbitMQ Admin:
-![RabbitMQ Admin](rabbitmq_admin.png)
+![RabbitMQ Admin](project_screenshots/rabbitmq_admin.png)

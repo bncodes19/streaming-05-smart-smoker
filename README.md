@@ -33,6 +33,12 @@ Run the emitter of tasks Python file in the project terminal:
 python3 emitter_of_tasks.py
 ```
 
+## Execute the Listener
+Run the listening worker Python file in a new terminal (separate from the producer termina)
+```
+python3 listening_worker.py
+```
+
 ## Screenshot of the messages in the terminal
 These messages are sent to three separate queues:
 > smoker-queue, brisket-queue, ribs-queue
@@ -42,3 +48,25 @@ These messages are sent to three separate queues:
 ## Screenshot of separate queues in RabbitMQ Admin
 After running the emitter_of_tasks.py file the messages are sent to three separate queues as seen on RabbitMQ Admin:
 ![RabbitMQ Admin](project_screenshots/rabbitmq_admin.png)
+
+## Screenshot of terminal setup
+
+### For ease of use, open three terminals to run this project:
+- One to run python3 emitter_of_tasks.py (renamed as Emitter in this screenshot) 
+- Another to run python3 listening_worker.py (renamed as Listener in this screenshot)
+- Another to start and stop RabbitMQ services with Brew (as mentioned above)
+
+![Terminal setup](project_screenshots/terminal_setup.png)
+
+## Screenshot of alerts produced
+
+### Smoker Alert:
+
+![Smoker Alert](project_screenshots/smoker_alert.png)
+
+### Brisket Alert
+![Brisket Alert](project_screenshots/brisket_alert.png)
+
+### Ribs Alert
+
+![Ribs Alert](project_screenshots/ribs_alert.png)

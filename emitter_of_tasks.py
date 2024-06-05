@@ -89,8 +89,8 @@ def main(host: str, filename: str):
                 if all(value =='' for value in row.values()):
                     # Continue iterating after skipping a null row
                     continue
-                # Example message reading: "BBQ Smoker Reading = Date: 05/22/21, Time: 12:20:20; temp is 84.2°"
-                message = f"{bbq_smoker} Reading = Date: {date_split}, Time: {time_split}; temp is {float(smoker_temp)}{degree_sign}"
+                # Example message reading: "Reading = Date: 05/22/21, Time: 12:20:20; BBQ Smoker temp is 84.2°"
+                message = f"Reading = Date: {date_split}, Time: {time_split}; {bbq_smoker} is {float(smoker_temp)}{degree_sign}"
                 # Send the message to the 'smoker-queue'
                 send_message(host, "smoker-queue", message)
             # Always true
@@ -99,8 +99,8 @@ def main(host: str, filename: str):
                 if all(value == '' for value in row.values()):
                     # Continue iterating after skipping a null row
                     continue
-                # Example message reading: BBQ Smoker Reading = Date: 05/22/21, Time: 13:46:35; Brisket temp is 38.7°
-                message = f"{bbq_smoker} Reading = Date: {date_split}, Time: {time_split}; {brisket} temp is {float(brisket_temp)}{degree_sign}"
+                # Example message reading: Reading = Date: 05/22/21, Time: 13:46:35; Brisket temp is 38.7°
+                message = f"Reading = Date: {date_split}, Time: {time_split}; {brisket} temp is {float(brisket_temp)}{degree_sign}"
                 # Send the message to the 'brisket-queue'
                 send_message(host, 'brisket-queue', message)
             if ribs_temp: # Always true
@@ -108,17 +108,18 @@ def main(host: str, filename: str):
                 if all(value == '' for value in row.values()):
                     # Continue iterating after skipping a null row
                     continue
-                # Example message reading: BBQ Smoker Reading = Date: 05/22/21, Time: 13:46:40; Ribs temp is 37.0°
-                message = f"{bbq_smoker} Reading = Date: {date_split}, Time: {time_split}; {ribs} temp is {float(ribs_temp)}{degree_sign}"
+                # Example message reading: Reading = Date: 05/22/21, Time: 13:46:40; Ribs temp is 37.0°
+                message = f"Reading = Date: {date_split}, Time: {time_split}; {ribs} temp is {float(ribs_temp)}{degree_sign}"
                 # Send the message to the 'ribs-queue'
                 send_message(host, 'ribs-queue', message)
 
-            # After iterating through a row, sleep for 30 seconds
-            time.sleep(0.1)
+            # After iterating through a row, sleep for 5 seconds
+            time.sleep(5)
 
 if __name__ == "__main__":  
     offer_rabbitmq_admin_site()    
 
-    temp_file = 'smoker-temps.csv'
     host = 'localhost'
+    temp_file = 'smoker-temps.csv'
+
     main(host, temp_file)
